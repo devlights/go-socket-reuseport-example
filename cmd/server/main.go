@@ -8,7 +8,7 @@
 //
 // # REFERENCES:
 //	- https://christina04.hatenablog.com/entry/go-so-reuseport
-// 	- https://pkg.go.dev/net@go1.20#ListenConfig
+//	- https://pkg.go.dev/net@go1.20#ListenConfig
 
 package main
 
