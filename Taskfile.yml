@@ -1,0 +1,25 @@
+version: '3'
+
+tasks:
+  build:
+    - task: clean
+    - go build -o bin/server cmd/server/main.go
+    - go build -o bin/client cmd/client/main.go
+  server:
+    cmds:
+      - cmd: bin/server {{.CLI_ARGS}}
+        ignore_error: true
+  client:
+    cmds:
+      - cmd: for i in {1..10}; do bin/client; done
+        ignore_error: true
+  ss:
+    cmds:
+      - cmd: ss -atn | grep -F "0.0.0.0:9999"
+        ignore_error: true
+  close:
+    cmds:
+      - pkill server
+  clean:
+    cmds:
+      - rm -rf bin
